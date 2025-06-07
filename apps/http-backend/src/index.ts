@@ -9,7 +9,7 @@ import { prismaClient } from "@repo/db/client";
 const app = express();
 
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 app.post("/signup", async (req, res) => {
 
@@ -73,7 +73,7 @@ app.post("/signin", async (req, res) => {
     })
 });
 
-app.get("/room", userMiddleware, async(req, res) => {
+app.post("/room", userMiddleware, async(req, res) => {
     const parsedData = CreateRoomSchema.safeParse(req.body);
     if(!parsedData.success) {
         res.json({
