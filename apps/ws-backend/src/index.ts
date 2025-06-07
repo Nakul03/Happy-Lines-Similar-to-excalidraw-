@@ -75,7 +75,13 @@ ws.on('message', async function message(data){
             const roomId = parsedData.roomId;
             const message = parsedData.message;
 
-            
+            await prismaClient.chat.create({
+                data: {
+                    roomId,
+                    message,
+                    userId
+                }
+            });
 
             users.forEach(user => {
                 if(user.rooms.includes(roomId)) {
@@ -86,15 +92,6 @@ ws.on('message', async function message(data){
                     }))
                 }
             })
-
-            await prismaClient.chat.create({
-                data: {
-                    roomId,
-                    message,
-                    userId
-                }
-            });
-
     }
     } catch (e) {
         ws.send(JSON.stringify({
