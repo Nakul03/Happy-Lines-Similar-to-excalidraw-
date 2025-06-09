@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
-import { initDraw } from "../draw";
 import { WS_URL } from "@/config";
 import { CanvasComponent } from "./Canvas";
 
@@ -31,10 +30,5 @@ export function RoomCanvas({ roomId }: {roomId: string}) {
 
     return <div>
         <CanvasComponent roomId = {roomId} socket={socket} />
-            
-        <div className="absolute bottom-4 right-4 space-y-2">
-                <button className="bg-white text-black m-2 px-4 py-2 rounded shadow">Rectangle</button>
-                <button className="bg-white text-black px-4 py-2 rounded shadow">Circle</button>
-            </div>
     </div>
 }
