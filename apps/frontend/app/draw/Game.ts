@@ -91,13 +91,13 @@ export class Game {
         }) 
     }
 
-    mouseDownHandler = (e) => {
+    mouseDownHandler = (e: MouseEvent) => {
         this.clicked = true;
         this.startX = e.clientX;
         this.startY = e.clientY;
     }
 
-    mouseUpHandler = (e) => {
+    mouseUpHandler = (e: MouseEvent) => {
         this.clicked = false
             const width = e.clientX - this.startX;
             const height = e.clientY - this.startY;
@@ -138,11 +138,10 @@ export class Game {
             }))
     }
 
-    mouseMoveHandler = (e) => { //Delete bad file and solve this e error
+    mouseMoveHandler = (e: MouseEvent) => { // solve this e error
         if(this.clicked) {
             const width = e.clientX - this.startX;
             const height = e.clientY - this.startY;
-
             this.clearCanvas();
 
             this.ctx.strokeStyle = "rgba(255,255,255)";
